@@ -1,6 +1,9 @@
 FROM alpine:3.19.1 AS builder
 ENV MERGERFS_VERSION=2.40.2
 
+LABEL maintainer=cyb3rgh05t
+LABEL org.opencontainers.image.source https://github.com/cyb3rgh05t/mergerfs-docker
+
 RUN apk add g++ git linux-headers make python3
 RUN git clone https://github.com/trapexit/mergerfs /mergerfs
 WORKDIR /mergerfs
@@ -21,6 +24,6 @@ COPY entrypoint.sh entrypoint.sh
 RUN mkdir /disks && \
     chmod +x entrypoint.sh
 
-VOLUME /merged
+VOLUME /unionfs
 
 ENTRYPOINT ["./entrypoint.sh"]
