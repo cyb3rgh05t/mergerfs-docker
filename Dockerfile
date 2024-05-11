@@ -24,6 +24,6 @@ COPY entrypoint.sh entrypoint.sh
 RUN mkdir /disks && \
     chmod +x entrypoint.sh
 
-VOLUME /unionfs
+VOLUME /merged
 
 ENTRYPOINT ["./entrypoint.sh"]
