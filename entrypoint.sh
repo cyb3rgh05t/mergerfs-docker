@@ -2,6 +2,7 @@
 
 function cleanup {
     umount /merged
+	umount /unionfs
 }
 
 mergerfs -o rw,use_ino,nonempty,allow_other,statfs_ignore=nc,func.getattr=newest,category.action=all,category.create=ff,cache.files=auto-full,dropcacheonclose=true,fsname=mergerfs /disks/*: /merged
